@@ -1,26 +1,59 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, Button, Heading, Grommet } from 'grommet';
+import { Notification } from 'grommet-icons';
+
+const AppBar = (props:any) => (
+    <Box
+     tag='header'
+      direction='row'
+      align='center'
+      justify='between'
+      background='brand'
+      pad={{ left: 'medium', right: 'small', vertical: 'small' }}
+      elevation='medium'
+      style={{ zIndex: '1' }}
+      {...props}
+    />
+  );
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grommet theme={theme} full>
+ <Box fill>
+      <AppBar>
+      <Heading level='3' margin='none'>My App</Heading>
+        <Button icon={<Notification />} onClick={() => {}} />
+       </AppBar>
+       <Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
+     <Box flex align='center' justify='center'>
+       app body
+     </Box>
+     <Box
+       width='medium'
+       background='light-2'
+       elevation='small'
+       align='center'
+       justify='center'
+     >
+       sidebar
+     </Box>
+   </Box>
+ </Box>
+    </Grommet>
   );
 }
+
+const theme = {
+  global: {
+    color: {
+      brand: '#228BE6'
+    },
+    font: {
+      family: 'Roboto',
+      size: '14px',
+      height: '20px',
+    },
+  },
+};
 
 export default App;
